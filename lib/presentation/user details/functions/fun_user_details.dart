@@ -64,7 +64,7 @@ void jobChooseFN(TextEditingController jobController) {
 }
 
 void desChooseFN(TextEditingController desController) {
-  if (desController.text.trim().length > 20) {
+  if (desController.text.trim().length > 70) {
     highlightValuenotifier.value['description'] = desController.text;
     highlightValuenotifier.notifyListeners();
   } else {
