@@ -55,13 +55,13 @@ class SignUpScrn extends StatelessWidget {
               ),
             ),
             Positioned(
-              bottom: Get.height * 0.2,
+              top: Get.height * 0.2,
               child: SizedBox(
                 width: Get.width,
                 child: Align(
+                  alignment: Alignment.center,
                   child: Container(
                     width: Get.width - 30,
-                    height: Get.height * 0.6,
                     decoration: BoxDecoration(
                         color: colorApp.withOpacity(0.3),
                         borderRadius: BorderRadius.circular(10)),

@@ -1,5 +1,11 @@
 // ignore_for_file: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member
-
+import 'package:dating_vista/core/constant/constant.dart';
+import 'package:dating_vista/presentation/home/explore/screen_explore.dart';
+import 'package:dating_vista/presentation/home/main%20screen/screen_main.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 import 'package:dating_vista/getx/snackbar/snackbar.dart';
 import 'package:dating_vista/presentation/user%20details/screen_user_details.dart';
 import 'package:flutter/material.dart';
@@ -71,4 +77,26 @@ void desChooseFN(TextEditingController desController) {
     highlightValuenotifier.value.remove('description');
     highlightValuenotifier.notifyListeners();
   }
+}
+
+void hobbiesFN(String val) {
+  if (val.trim().length > 3) {
+    ishobbiesValnoti.value = true;
+  } else {
+    ishobbiesValnoti.value = false;
+  }
+}
+
+void addressChooseFN(TextEditingController addressController) {
+  if (addressController.text.trim().length > 20) {
+    highlightValuenotifier.value['address'] = addressController.text;
+    highlightValuenotifier.notifyListeners();
+  } else {
+    highlightValuenotifier.value.remove('address');
+    highlightValuenotifier.notifyListeners();
+  }
+}
+
+void addProfileTo() {
+  Get.to(() => MainPageScreen());
 }

@@ -58,7 +58,6 @@ class OTPScrn extends StatelessWidget {
                 child: Align(
                   child: Container(
                     width: Get.width - 30,
-                    height: Get.height * 0.4,
                     decoration: BoxDecoration(
                         color: colorApp.withOpacity(0.3),
                         borderRadius: BorderRadius.circular(10)),
