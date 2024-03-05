@@ -95,3 +95,65 @@ class TextFormWidget extends StatelessWidget {
     );
   }
 }
+
+class TextFormAreaWidget extends StatelessWidget {
+  const TextFormAreaWidget({
+    super.key,
+    required this.label,
+    this.controller,
+    this.validator,
+    required this.icon,
+    this.suffixicon,
+    this.suffixOnpress,
+    this.obscurebool = false,
+    this.onChanged,
+    this.hintText,
+    this.keyboardType,
+    this.suffixIconColor,
+  });
+  final String label;
+  final String? hintText;
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
+  final IconData icon;
+  final IconData? suffixicon;
+  final void Function()? suffixOnpress;
+  final void Function(String?)? onChanged;
+  final bool obscurebool;
+  final Color? suffixIconColor;
+  final TextInputType? keyboardType;
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      keyboardType: keyboardType,
+      maxLines: 10,
+      style: const TextStyle(color: colorBlack),
+      onChanged: onChanged,
+      obscureText: obscurebool,
+      controller: controller,
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: colorWhite,
+        suffixIcon: IconButton(
+          onPressed: suffixOnpress,
+          icon: Icon(
+            suffixicon,
+            color: suffixIconColor,
+          ),
+        ),
+        prefixIcon: Icon(icon),
+        labelText: label,
+        hintText: hintText,
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: colorApp,
+          ),
+          borderRadius: BorderRadius.all(Radius.circular(5)),
+        ),
+        border: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(5))),
+      ),
+      validator: validator,
+    );
+  }
+}

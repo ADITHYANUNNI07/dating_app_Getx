@@ -7,6 +7,7 @@ import 'package:dating_vista/presentation/user%20details/functions/fun_user_deta
 import 'package:dating_vista/presentation/user%20details/widget/widget_user_details.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 ValueNotifier<bool?> dobValuenotifier = ValueNotifier(null);
@@ -23,6 +24,8 @@ class UserDetailsScrn extends StatelessWidget {
   }
   DateTime? dobDate;
   final dobController = TextEditingController();
+  final jobController = TextEditingController();
+  final desController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -73,7 +76,7 @@ class UserDetailsScrn extends StatelessWidget {
                     builder: (context, highlightVal, _) {
                       return LinearProgressIndicator(
                         minHeight: 7,
-                        value: highlightVal.length * 0.1,
+                        value: highlightVal.length * 0.2,
                         backgroundColor: colorApp.withOpacity(0.1),
                         valueColor:
                             const AlwaysStoppedAnimation<Color>(colorApp),
@@ -300,14 +303,47 @@ class UserDetailsScrn extends StatelessWidget {
                   ),
                 ),
                 sizedBox25H,
-                const HighlightContWidget(
-                    title: 'Please provide your job',
-                    content: 'Select Our Current Position',
-                    widget: Column(
-                      children: [
-                        TextFormWidget(label: 'Find it', icon: Icons.search)
-                      ],
-                    ))
+                HighlightContWidget(
+                  title: 'Please provide your job',
+                  content: 'Select Our Current Position',
+                  widget: Column(
+                    children: [
+                      TextFormWidget(
+                        label: 'Enter Your Job',
+                        icon: Icons.work,
+                        controller: jobController,
+                        onChanged: (value) {
+                          jobChooseFN(jobController);
+                        },
+                      )
+                    ],
+                  ),
+                ),
+                sizedBox25H,
+                HighlightContWidget(
+                  title: "Who I'm ?",
+                  content: 'Please provide your details',
+                  widget: Column(
+                    children: [
+                      TextFormAreaWidget(
+                        label: 'Find it',
+                        icon: Icons.description,
+                        controller: desController,
+                        onChanged: (value) {
+                          desChooseFN(desController);
+                        },
+                      )
+                    ],
+                  ),
+                ),
+                sizedBox15H,
+                SizedBox(
+                  width: Get.width,
+                  child: ElevatedBtnWidget(
+                      onPressed: () {},
+                      btnColor: colorApp,
+                      title: 'Add Your Profile'.toUpperCase()),
+                )
               ],
             ),
           ),

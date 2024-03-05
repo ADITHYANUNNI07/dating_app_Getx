@@ -52,3 +52,23 @@ void interestedChooseFN(String interest) {
     highlightValuenotifier.notifyListeners();
   }
 }
+
+void jobChooseFN(TextEditingController jobController) {
+  if (jobController.text.trim().length > 4) {
+    highlightValuenotifier.value['job'] = jobController.text;
+    highlightValuenotifier.notifyListeners();
+  } else {
+    highlightValuenotifier.value.remove('job');
+    highlightValuenotifier.notifyListeners();
+  }
+}
+
+void desChooseFN(TextEditingController desController) {
+  if (desController.text.trim().length > 20) {
+    highlightValuenotifier.value['description'] = desController.text;
+    highlightValuenotifier.notifyListeners();
+  } else {
+    highlightValuenotifier.value.remove('description');
+    highlightValuenotifier.notifyListeners();
+  }
+}
